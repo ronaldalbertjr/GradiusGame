@@ -3,26 +3,22 @@ using System.Collections;
 
 public class ShotScript : MonoBehaviour
 {
-    public GameObject coli;
-    public bool alreadyshot;
-	void Start ()
+    public GameObject cam;
+    int speed;
+    void Start()
     {
-	
-	}
+        speed = 10;
+    }
 	void Update ()
     {
-	    if(!alreadyshot)
-        {
-            this.transform.localPosition = new Vector3(0f, 0f, 0f);
-        }
-        else
-        {
-            this.transform.position += Vector3.right * Time.deltaTime * 5;
-        }
+            this.transform.position += Vector3.right * Time.deltaTime * speed;
 	}
 
-    void OnCollisionEnter2D(Collision2D col)
+    void OnTriggerEnter2D(Collider2D col)
     {
-        alreadyshot = false;
+        if (col.tag == "MainCamera")
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

@@ -5,7 +5,8 @@ public class PlayerMovement : MonoBehaviour
 {
     float mvx;
     float mvy;
-    public GameObject[] shot = new GameObject[5];
+    public GameObject prefab;
+    GameObject[] shot = new GameObject[5];
     public float speed;
 	void Start ()
     {
@@ -20,9 +21,9 @@ public class PlayerMovement : MonoBehaviour
         {
             for(int i = 0; i < shot.Length; i++)
             {
-                if(!shot[i].GetComponent<ShotScript>().alreadyshot)
+                if(shot[i] == null)
                 {
-                    shot[i].GetComponent<ShotScript>().alreadyshot = true;
+                    shot[i] = (GameObject)Instantiate(prefab, this.transform.position, new Quaternion(0f, 0f, 0f, 0f));
                     break;
                 }
             }
