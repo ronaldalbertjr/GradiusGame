@@ -20,5 +20,9 @@ public class ShotScript : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        else if(col.tag == "Enemy")
+        {
+            Destroy(col.gameObject);
+        }
     }
 }
