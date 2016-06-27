@@ -4,10 +4,21 @@ using System.Collections;
 public class ShotScript : MonoBehaviour
 {
     public GameObject cam;
+    GameObject enemy;
+    GameObject player;
     int speed;
     void Start()
     {
-        speed = 10;
+        if(this.gameObject.tag == "PlayerShot")
+        {
+            speed = 10;
+        }
+        else
+        {
+            speed = -10;
+        }
+        enemy = GameObject.FindGameObjectWithTag("Enemy");
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 	void Update ()
     {
@@ -22,7 +33,13 @@ public class ShotScript : MonoBehaviour
         }
         else if(col.tag == "Enemy")
         {
-            Destroy(col.gameObject);
+            Destroy(this.gameObject);
+            enemy.GetComponent<EnemyMovement>().dying = true;
+        }
+        else if(col.tag == "Player")
+        {
+            Destroy(this.gameObject);
+            player.GetComponent<PlayerMovement>().dying = true;
         }
     }
 }
