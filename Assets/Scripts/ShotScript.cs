@@ -5,6 +5,7 @@ public class ShotScript : MonoBehaviour
 {
     public GameObject cam;
     GameObject enemy;
+    GameObject enemy1;
     GameObject player;
     int speed;
     void Start()
@@ -18,6 +19,7 @@ public class ShotScript : MonoBehaviour
             speed = -10;
         }
         enemy = GameObject.FindGameObjectWithTag("Enemy");
+        enemy1 = GameObject.FindGameObjectWithTag("Enemy1");
         player = GameObject.FindGameObjectWithTag("Player");
     }
 	void Update ()
@@ -35,6 +37,11 @@ public class ShotScript : MonoBehaviour
         {
             Destroy(this.gameObject);
             enemy.GetComponent<EnemyMovement>().dying = true;
+        }
+        else if(col.tag == "Enemy1")
+        {
+            Destroy(this.gameObject);
+            enemy1.GetComponent<EnemyMovement1>().dying = true;
         }
         else if(col.tag == "Player")
         {

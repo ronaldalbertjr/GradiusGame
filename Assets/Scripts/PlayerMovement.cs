@@ -7,15 +7,18 @@ public class PlayerMovement : MonoBehaviour
     float mvy;
     double deathtime;
     public GameObject prefab;
+    public GameObject[] enemyprefab =  new GameObject[5];
     GameObject[] shot = new GameObject[5];
     public float speed;
     public bool dying;
+    double time;
 	void Start ()
     {
         speed = 5;
 	}
 	void Update ()
     {
+        time += Time.deltaTime;
         if(dying)
         {
             deathtime = Time.deltaTime;
@@ -24,6 +27,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 Destroy(this.gameObject);
             }
+        }
+        if(time > 3)
+        {
+            Instantiate(enemyprefab[Random.Range(0, 2)], new Vector3(6, Random.Range(-5, 5)), new Quaternion(0f, 0f, 0f, 0f));
+            time = 0;
         }
         mvx = Input.GetAxis("Horizontal");
         mvy = Input.GetAxis("Vertical");

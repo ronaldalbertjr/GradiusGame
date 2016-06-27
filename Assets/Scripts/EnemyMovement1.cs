@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyMovement1 : MonoBehaviour
 {
     Vector3 aux;
     float speedx;
@@ -11,46 +11,46 @@ public class EnemyMovement : MonoBehaviour
     public bool dying;
     public GameObject prefab;
     AudioSource playeraudio;
-    void Start ()
+    void Start()
     {
         speedx = -1;
         speedy = 5;
         playeraudio = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>();
-	}
-	void Update ()
+    }
+    void Update()
     {
         time += Time.deltaTime;
-        if(dying)
+        if (dying)
         {
             deathtime += Time.deltaTime;
             this.GetComponent<Animator>().SetTrigger("EnemyDeath");
-            if(deathtime > 0.5)
+            if (deathtime > 0.5)
             {
                 Destroy(this.gameObject);
             }
         }
-        else if(time > 1)
+        else if (time > 1)
         {
             time = 0;
             playeraudio.Play();
             Instantiate(prefab, this.transform.position + new Vector3(-2, 0), Quaternion.Euler(0, 0, 180f));
         }
-        aux = new Vector3(Time.deltaTime * speedx, Time.deltaTime * speedy);
+        aux = new Vector3(Time.deltaTime * speedx, 0);
         this.transform.position += aux;
-	}
+    }
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.tag == "MainCamera")
         {
             speedy *= -1;
-            if(this.transform.position.x  < -6)
+            if (this.transform.position.x < -6)
             {
                 Destroy(this.gameObject);
             }
         }
-        else if(col.gameObject.tag == "Player")
+        else if (col.gameObject.tag == "Player")
         {
             col.gameObject.GetComponent<PlayerMovement>().dying = true;
         }
-    }        
+    }
 }
