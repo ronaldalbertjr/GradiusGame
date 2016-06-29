@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if(time > 3)
         {
-            Instantiate(enemyprefab[Random.Range(0, 2)], new Vector3(6, Random.Range(-5, 5)), new Quaternion(0f, 0f, 0f, 0f));
+            Instantiate(enemyprefab[Random.Range(0, 3)], new Vector3(6, Random.Range(-5, 5)), new Quaternion(0f, 0f, 0f, 0f));
             time = 0;
         }
         mvx = Input.GetAxis("Horizontal");

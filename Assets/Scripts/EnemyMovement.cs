@@ -33,7 +33,7 @@ public class EnemyMovement : MonoBehaviour
         {
             time = 0;
             playeraudio.Play();
-            Instantiate(prefab, this.transform.position + new Vector3(-2, 0), Quaternion.Euler(0, 0, 180f));
+            Instantiate(prefab, this.transform.position + new Vector3(-4, 0), Quaternion.Euler(0, 0, 180f));
         }
         aux = new Vector3(Time.deltaTime * speedx, Time.deltaTime * speedy);
         this.transform.position += aux;
