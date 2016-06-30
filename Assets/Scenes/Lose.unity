@@ -281,7 +281,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 588124769}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1260233841}
+        m_MethodName: OnBackToMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &588124769
@@ -417,6 +429,7 @@ GameObject:
   - 223: {fileID: 1260233840}
   - 114: {fileID: 1260233839}
   - 114: {fileID: 1260233838}
+  - 114: {fileID: 1260233841}
   m_Layer: 5
   m_Name: BackToMenuCanvas
   m_TagString: Untagged
@@ -496,3 +509,14 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!114 &1260233841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1260233836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b39e1cbd4947b844e893fb6f250c410a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

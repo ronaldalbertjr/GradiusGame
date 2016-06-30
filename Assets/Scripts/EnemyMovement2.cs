@@ -10,6 +10,7 @@ public class EnemyMovement2 : MonoBehaviour
     public bool dying;
     AudioSource playeraudio;
     GameObject player;
+    public GameObject speedBuff;
     void Start()
     {
         speed = 5;
@@ -26,6 +27,10 @@ public class EnemyMovement2 : MonoBehaviour
             if (deathtime > 0.5)
             {
                 Destroy(this.gameObject);
+                if (Random.Range(0, 100) < 10)
+                {
+                    Instantiate(speedBuff, this.transform.position, Quaternion.Euler(0f, 0f, 0f));
+                }
             }
         }
        transform.position = Vector3.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);

@@ -90,6 +90,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dying: 0
   prefab: {fileID: 143610, guid: b2d935f3a4748f34bbbab99a769299a6, type: 2}
+  speedBuff: {fileID: 172408, guid: de572c4eb555c4743ad166649d288eea, type: 2}
 --- !u!212 &21200608
 SpriteRenderer:
   m_ObjectHideFlags: 1

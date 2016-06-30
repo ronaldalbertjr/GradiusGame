@@ -11,6 +11,7 @@ public class EnemyMovement : MonoBehaviour
     public bool dying;
     public GameObject prefab;
     AudioSource playeraudio;
+    public GameObject speedBuff;
     void Start ()
     {
         speedx = -1;
@@ -27,6 +28,10 @@ public class EnemyMovement : MonoBehaviour
             if(deathtime > 0.5)
             {
                 Destroy(this.gameObject);
+                if(Random.Range(0, 100) < 10)
+                {
+                    Instantiate(speedBuff, this.transform.position, Quaternion.Euler(0f, 0f, 0f));
+                }
             }
         }
         else if(time > 1)

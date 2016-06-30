@@ -281,6 +281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff1b3ab365821ef4d9ea07af59723ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedBuff: 0
   prefab: {fileID: 199612, guid: dcfa9d1be190ee741ae0004b45d0c3d3, type: 2}
   enemyprefab:
   - {fileID: 193756, guid: b25ed5a117a95524ea92a735d810fcb7, type: 2}
@@ -290,6 +291,7 @@ MonoBehaviour:
   - {fileID: 100348, guid: 3eaa114bd14b608428e7181bf270ce0c, type: 2}
   speed: 1
   dying: 0
+  weaponBuff: 0
 --- !u!61 &779580560
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -485,6 +487,10 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 9eb7ec17a03d63449bb29bec219ed7cb, type: 2}
+    - target: {fileID: 11446212, guid: b25ed5a117a95524ea92a735d810fcb7, type: 2}
+      propertyPath: speedBuff
+      value: 
+      objectReference: {fileID: 172408, guid: de572c4eb555c4743ad166649d288eea, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b25ed5a117a95524ea92a735d810fcb7, type: 2}
   m_IsPrefabParent: 0
