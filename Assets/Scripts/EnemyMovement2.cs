@@ -17,6 +17,7 @@ public class EnemyMovement2 : MonoBehaviour
         speed = 5;
         playeraudio = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>();
         player = GameObject.FindGameObjectWithTag("Player");
+        this.transform.rotation = Quaternion.Euler(0f, 0f, -90f);
     }
     void Update()
     {
