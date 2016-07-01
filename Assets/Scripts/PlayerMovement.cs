@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
     float mvx;
     float mvy;
     float speedTime;
+    float weaponTime;
     public bool speedBuff;
     double deathtime;
     public GameObject prefab;
@@ -18,7 +19,6 @@ public class PlayerMovement : MonoBehaviour
 	void Start ()
     {
         speed = 5;
-        weaponBuff = true;
 	}
 	void Update ()
     {
@@ -48,6 +48,15 @@ public class PlayerMovement : MonoBehaviour
                 speedTime = 0;
             }
         }
+        if(weaponBuff)
+        {
+            weaponTime += Time.deltaTime;
+            if(weaponTime >= 10)
+            {
+                weaponBuff = false;
+                weaponTime = 0;
+            }
+        }
         mvx = Input.GetAxis("Horizontal");
         mvy = Input.GetAxis("Vertical");
         this.transform.position += new Vector3(mvx * speed * Time.deltaTime, mvy * speed * Time.deltaTime);
@@ -59,6 +68,11 @@ public class PlayerMovement : MonoBehaviour
                 {
                     this.GetComponent<AudioSource>().Play();
                     shot[i] = (GameObject)Instantiate(prefab, this.transform.position + new Vector3(3, 0), new Quaternion(0f, 0f, 0f, 0f));
+                    if(weaponBuff)
+                    {
+                        Instantiate(prefab, this.transform.position + new Vector3(2.5f, 1), new Quaternion(0, 0, 0, 0));
+                        Instantiate(prefab, this.transform.position + new Vector3(2.5f, -1), new Quaternion(0, 0, 0, 0));
+                    }
                     break;
                 }
             }

@@ -90,6 +90,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dying: 0
   speedBuff: {fileID: 172408, guid: de572c4eb555c4743ad166649d288eea, type: 2}
+  weaponBuff: {fileID: 189452, guid: 28d21c6b780b2ca4ea750e6551bbfd8c, type: 2}
 --- !u!212 &21295530
 SpriteRenderer:
   m_ObjectHideFlags: 1

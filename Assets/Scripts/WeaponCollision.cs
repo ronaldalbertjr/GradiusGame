@@ -1,15 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WeaponCollision : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+public class WeaponCollision : MonoBehaviour
+{
+    GameObject player;
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+            player.GetComponent<PlayerMovement>().weaponBuff = true;
+            Destroy(this.gameObject);
+        }
+    }
 }

@@ -12,6 +12,7 @@ public class EnemyMovement : MonoBehaviour
     public GameObject prefab;
     AudioSource playeraudio;
     public GameObject speedBuff;
+    public GameObject weaponBuff;
     void Start ()
     {
         speedx = -1;
@@ -31,6 +32,10 @@ public class EnemyMovement : MonoBehaviour
                 if(Random.Range(0, 100) < 10)
                 {
                     Instantiate(speedBuff, this.transform.position, Quaternion.Euler(0f, 0f, 0f));
+                }
+                else if(Random.Range(0, 100) < 10)
+                {
+                    Instantiate(weaponBuff, this.transform.position, Quaternion.Euler(0f, 0f, 0f));
                 }
             }
         }
