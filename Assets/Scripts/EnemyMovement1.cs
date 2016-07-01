@@ -18,6 +18,7 @@ public class EnemyMovement1 : MonoBehaviour
         speedx = -1;
         speedy = 5;
         playeraudio = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>();
+        this.transform.rotation = Quaternion.Euler(0f, 0f, -90f);
     }
     void Update()
     {
@@ -52,10 +53,9 @@ public class EnemyMovement1 : MonoBehaviour
     {
         if (col.gameObject.tag == "MainCamera")
         {
-            speedy *= -1;
-            if (this.transform.position.x < -6)
+            if (this.transform.position.x < -4)
             {
-                Destroy(this.gameObject);
+                dying = true;
             }
         }
         else if (col.gameObject.tag == "Player")

@@ -53,9 +53,9 @@ public class EnemyMovement : MonoBehaviour
         if (col.gameObject.tag == "MainCamera")
         {
             speedy *= -1;
-            if(this.transform.position.x  < -6)
+            if(this.transform.position.x  < -4)
             {
-                Destroy(this.gameObject);
+                dying = true;
             }
         }
         else if(col.gameObject.tag == "Player")
