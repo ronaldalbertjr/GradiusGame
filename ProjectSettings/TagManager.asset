@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Enemy1
   - Enemy2
+  - Shield
   layers:
   - Default
   - TransparentFX

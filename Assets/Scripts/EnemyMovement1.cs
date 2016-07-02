@@ -13,6 +13,7 @@ public class EnemyMovement1 : MonoBehaviour
     AudioSource playeraudio;
     public GameObject speedBuff;
     public GameObject weaponBuff;
+    public GameObject shieldBuff;
     void Start()
     {
         speedx = -1;
@@ -38,6 +39,10 @@ public class EnemyMovement1 : MonoBehaviour
                 {
                     Instantiate(weaponBuff, this.transform.position, Quaternion.Euler(0f, 0f, 0f));
                 }
+                else if (Random.Range(0, 100) < 10)
+                {
+                    Instantiate(shieldBuff, this.transform.position, Quaternion.Euler(0f, 0f, 0f));
+                }
             }
         }
         else if (time > 1)
@@ -57,6 +62,10 @@ public class EnemyMovement1 : MonoBehaviour
             {
                 dying = true;
             }
+        }
+        else if(col.gameObject.tag == "Shield")
+        {
+            Destroy(col.gameObject);
         }
         else if (col.gameObject.tag == "Player")
         {

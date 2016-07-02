@@ -55,5 +55,11 @@ public class ShotScript : MonoBehaviour
             Destroy(this.gameObject);
             player.GetComponent<PlayerMovement>().dying = true;
         }
+        else if(this.tag != "PlayerShot" && col.tag == "Shield")
+        {
+            Destroy(this.gameObject);
+            Destroy(col.gameObject);
+            player.GetComponent<PlayerMovement>().shieldBuff = false; 
+        }
     }
 }

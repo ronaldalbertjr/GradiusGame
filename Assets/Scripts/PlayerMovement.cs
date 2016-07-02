@@ -12,10 +12,12 @@ public class PlayerMovement : MonoBehaviour
     public GameObject prefab;
     public GameObject[] enemyprefab =  new GameObject[5];
     GameObject[] shot = new GameObject[5];
+    public GameObject shield;
     public float speed;
     public bool dying;
     double time;
     public bool weaponBuff;
+    public bool shieldBuff;
 	void Start ()
     {
         speed = 5;
@@ -23,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
 	void Update ()
     {
         time += Time.deltaTime;
-        if(dying)
+        if (dying)
         {
             deathtime += Time.deltaTime;
             this.GetComponent<Animator>().SetTrigger("Death");
@@ -57,18 +59,20 @@ public class PlayerMovement : MonoBehaviour
                 weaponTime = 0;
             }
         }
-        mvx = Input.GetAxis("Horizontal");
-        mvy = Input.GetAxis("Vertical");
-        this.transform.position += new Vector3(mvx * speed * Time.deltaTime, mvy * speed * Time.deltaTime);
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(shieldBuff)
         {
-            for(int i = 0; i < shot.Length; i++)
+            Instantiate(shield, this.transform.position, new Quaternion(0f, 0f, 0f, 0f));
+            shieldBuff = false;
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            for (int i = 0; i < shot.Length; i++)
             {
-                if(shot[i] == null)
+                if (shot[i] == null)
                 {
                     this.GetComponent<AudioSource>().Play();
                     shot[i] = (GameObject)Instantiate(prefab, this.transform.position + new Vector3(3, 0), new Quaternion(0f, 0f, 0f, 0f));
-                    if(weaponBuff)
+                    if (weaponBuff)
                     {
                         Instantiate(prefab, this.transform.position + new Vector3(2.5f, 1), new Quaternion(0, 0, 0, 0));
                         Instantiate(prefab, this.transform.position + new Vector3(2.5f, -1), new Quaternion(0, 0, 0, 0));
@@ -77,5 +81,8 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
+        mvx = Input.GetAxis("Horizontal");
+        mvy = Input.GetAxis("Vertical");
+        this.transform.position += new Vector3(mvx * speed * Time.deltaTime, mvy * speed * Time.deltaTime);
     }
 }
