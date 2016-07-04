@@ -8,6 +8,7 @@ public class ShotScript : MonoBehaviour
     GameObject enemy1;
     GameObject enemy2;
     GameObject player;
+    GameObject boss;
     int speed;
     void Start()
     {
@@ -23,6 +24,7 @@ public class ShotScript : MonoBehaviour
         enemy1 = GameObject.FindGameObjectWithTag("Enemy1");
         enemy2 = GameObject.FindGameObjectWithTag("Enemy2");
         player = GameObject.FindGameObjectWithTag("Player");
+        boss = GameObject.FindGameObjectWithTag("Boss");
     }
 	void Update ()
     {
@@ -39,16 +41,19 @@ public class ShotScript : MonoBehaviour
         {
             Destroy(this.gameObject);
             enemy.GetComponent<EnemyMovement>().dying = true;
+            boss.GetComponent<BossScript>().enemycounter++;
         }
         else if(col.tag == "Enemy1")
         {
             Destroy(this.gameObject);
             enemy1.GetComponent<EnemyMovement1>().dying = true;
+            boss.GetComponent<BossScript>().enemycounter++;
         }
         else if(col.tag == "Enemy2")
         {
             Destroy(this.gameObject);
             enemy2.GetComponent<EnemyMovement2>().dying = true;
+            boss.GetComponent<BossScript>().enemycounter++;
         }
         else if(col.tag == "Player")
         {
@@ -60,6 +65,11 @@ public class ShotScript : MonoBehaviour
             Destroy(this.gameObject);
             Destroy(col.gameObject);
             player.GetComponent<PlayerMovement>().shieldBuff = false; 
+        }
+        else if(this.tag == "PlayerShot" && col.tag == "Boss")
+        {
+            Destroy(this.gameObject);
+            col.GetComponent<BossScript>().shot = true;
         }
     }
 }

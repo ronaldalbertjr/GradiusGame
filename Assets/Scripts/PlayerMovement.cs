@@ -7,12 +7,15 @@ public class PlayerMovement : MonoBehaviour
     float mvy;
     float speedTime;
     float weaponTime;
+    GameObject boss;
     public bool speedBuff;
     double deathtime;
     public GameObject prefab;
     public GameObject[] enemyprefab =  new GameObject[5];
     GameObject[] shot = new GameObject[5];
     public GameObject shield;
+    public AudioSource audio;
+    public AudioSource loseaudio;
     public float speed;
     public bool dying;
     double time;
@@ -21,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
 	void Start ()
     {
         speed = 5;
+        boss = GameObject.FindGameObjectWithTag("Boss");
+        audio.Pause();
 	}
 	void Update ()
     {
@@ -29,16 +34,19 @@ public class PlayerMovement : MonoBehaviour
         {
             deathtime += Time.deltaTime;
             this.GetComponent<Animator>().SetTrigger("Death");
-            if(deathtime > 0.5)
+            if(deathtime > 1)
             {
                 Destroy(this.gameObject);
                 Application.LoadLevel("Lose");
             }
         }
-        if(time > 3)
+        if (boss != null)
         {
-            Instantiate(enemyprefab[Random.Range(0, 3)], new Vector3(6, Random.Range(-4, 4)), new Quaternion(0f, 0f, 0f, 0f));
-            time = 0;
+            if (time > 3 && boss.GetComponent<BossScript>().enemycounter < 20)
+            {
+                Instantiate(enemyprefab[Random.Range(0, 3)], new Vector3(6, Random.Range(-4, 4)), new Quaternion(0f, 0f, 0f, 0f));
+                time = 0;
+            }
         }
         if(speedBuff)
         {
@@ -81,8 +89,20 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
-        mvx = Input.GetAxis("Horizontal");
-        mvy = Input.GetAxis("Vertical");
+        if (boss != null)
+        {
+            mvx = Input.GetAxis("Horizontal");
+            mvy = Input.GetAxis("Vertical");
+        }
+        else
+        {
+            audio.UnPause();
+            this.transform.position += Vector3.right * Time.deltaTime;
+            if(this.transform.position.x > 8)
+            {
+                Application.LoadLevel("Win");
+            }
+        }
         this.transform.position += new Vector3(mvx * speed * Time.deltaTime, mvy * speed * Time.deltaTime);
     }
 }

@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\BackToMenuScript.cs" />
      <Compile Include="Assets\Scripts\BackgroundMovement.cs" />
+     <Compile Include="Assets\Scripts\BossScript.cs" />
      <Compile Include="Assets\Scripts\EnemyMovement.cs" />
      <Compile Include="Assets\Scripts\EnemyMovement1.cs" />
      <Compile Include="Assets\Scripts\EnemyMovement2.cs" />
