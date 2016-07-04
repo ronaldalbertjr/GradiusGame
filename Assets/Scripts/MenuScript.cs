@@ -13,6 +13,14 @@ public class MenuScript : MonoBehaviour
     {
         Application.LoadLevel("Cena1");
     }
+    public void OnMultiplayer()
+    {
+        Application.LoadLevel("Cena2");
+    }
+    public void OnCredits()
+    {
+        Application.LoadLevel("Credits");
+    }
     public void OnExit()
     {
         exit.enabled = true;

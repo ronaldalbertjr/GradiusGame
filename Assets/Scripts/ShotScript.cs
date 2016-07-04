@@ -55,7 +55,7 @@ public class ShotScript : MonoBehaviour
             enemy2.GetComponent<EnemyMovement2>().dying = true;
             boss.GetComponent<BossScript>().enemycounter++;
         }
-        else if(col.tag == "Player")
+        else if(col.tag == "Player" && this.tag != "PlayerShot")
         {
             Destroy(this.gameObject);
             player.GetComponent<PlayerMovement>().dying = true;
@@ -64,12 +64,16 @@ public class ShotScript : MonoBehaviour
         {
             Destroy(this.gameObject);
             Destroy(col.gameObject);
-            player.GetComponent<PlayerMovement>().shieldBuff = false; 
         }
         else if(this.tag == "PlayerShot" && col.tag == "Boss")
         {
             Destroy(this.gameObject);
             col.GetComponent<BossScript>().shot = true;
+        }
+        else if (col.tag == "Player2" && this.tag != "PlayerShot")
+        {
+            Destroy(this.gameObject);
+            col.GetComponent<PlayerMovement2>().dying = true;
         }
     }
 }

@@ -15,5 +15,10 @@ public class SpeedCollision : MonoBehaviour
             player.GetComponent<PlayerMovement>().speedBuff = true;
             Destroy(this.gameObject);
         }
+        else if(col.gameObject.tag == "Player2")
+        {
+            col.gameObject.GetComponent<PlayerMovement2>().speedBuff = true;
+            Destroy(this.gameObject);
+        }
     }
 }

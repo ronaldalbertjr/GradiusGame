@@ -56,5 +56,9 @@ public class EnemyMovement2 : MonoBehaviour
         {
             col.gameObject.GetComponent<PlayerMovement>().dying = true;
         }
+        else if (col.gameObject.tag == "Player2" && !dying)
+        {
+            col.gameObject.GetComponent<PlayerMovement2>().dying = true;
+        }
     }
 }

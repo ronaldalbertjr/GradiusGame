@@ -68,5 +68,9 @@ public class BossScript : MonoBehaviour
         {
             col.gameObject.GetComponent<PlayerMovement>().dying = true;
         }
+        else if(col.gameObject.tag == "Player2")
+        {
+            col.gameObject.GetComponent<PlayerMovement2>().dying = true;
+        }
     }
 }

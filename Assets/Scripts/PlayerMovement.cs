@@ -9,13 +9,13 @@ public class PlayerMovement : MonoBehaviour
     float weaponTime;
     GameObject boss;
     public bool speedBuff;
+    GameObject player2;
     double deathtime;
     public GameObject prefab;
     public GameObject[] enemyprefab =  new GameObject[5];
     GameObject[] shot = new GameObject[5];
     public GameObject shield;
     public AudioSource audio;
-    public AudioSource loseaudio;
     public float speed;
     public bool dying;
     double time;
@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     {
         speed = 5;
         boss = GameObject.FindGameObjectWithTag("Boss");
+        player2 = GameObject.FindGameObjectWithTag("Player2");
         audio.Pause();
 	}
 	void Update ()
@@ -37,7 +38,10 @@ public class PlayerMovement : MonoBehaviour
             if(deathtime > 1)
             {
                 Destroy(this.gameObject);
-                Application.LoadLevel("Lose");
+                if (player2 == null)
+                {
+                    Application.LoadLevel("Lose");
+                }
             }
         }
         if (boss != null)
@@ -69,10 +73,10 @@ public class PlayerMovement : MonoBehaviour
         }
         if(shieldBuff)
         {
-            Instantiate(shield, this.transform.position, new Quaternion(0f, 0f, 0f, 0f));
+            Instantiate(shield, this.transform.position + Vector3.right, new Quaternion(0f, 0f, 0f, 0f));
             shieldBuff = false;
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.KeypadEnter))
         {
             for (int i = 0; i < shot.Length; i++)
             {
@@ -91,8 +95,22 @@ public class PlayerMovement : MonoBehaviour
         }
         if (boss != null)
         {
-            mvx = Input.GetAxis("Horizontal");
-            mvy = Input.GetAxis("Vertical");
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                this.transform.position += Vector3.up * speed * Time.deltaTime;
+            }
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                this.transform.position += Vector3.right * speed * Time.deltaTime;
+            }
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                this.transform.position += Vector3.down * speed * Time.deltaTime;
+            }
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                this.transform.position += Vector3.left * speed * Time.deltaTime;
+            }
         }
         else
         {
@@ -103,6 +121,5 @@ public class PlayerMovement : MonoBehaviour
                 Application.LoadLevel("Win");
             }
         }
-        this.transform.position += new Vector3(mvx * speed * Time.deltaTime, mvy * speed * Time.deltaTime);
     }
 }

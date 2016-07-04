@@ -15,5 +15,10 @@ public class WeaponCollision : MonoBehaviour
             player.GetComponent<PlayerMovement>().weaponBuff = true;
             Destroy(this.gameObject);
         }
+        else if(col.gameObject.tag == "Player2")
+        {
+            col.GetComponent<PlayerMovement2>().weaponBuff = true;
+            Destroy(this.gameObject);
+        }
     }
 }
