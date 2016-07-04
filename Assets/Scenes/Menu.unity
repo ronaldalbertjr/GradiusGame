@@ -117,7 +117,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1944503059}
   m_RootOrder: 1
-  m_AnchorMin: {x: .414287329, y: .536545992}
+  m_AnchorMin: {x: .414287329, y: .522272587}
   m_AnchorMax: {x: .582234383, y: .628000021}
   m_AnchoredPosition: {x: -2, y: .5}
   m_SizeDelta: {x: 0, y: -6}
@@ -731,9 +731,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1944503059}
   m_RootOrder: 4
-  m_AnchorMin: {x: .414287329, y: .0603336059}
-  m_AnchorMax: {x: .572468758, y: .140241668}
-  m_AnchoredPosition: {x: -3, y: -1.5}
+  m_AnchorMin: {x: .414287329, y: .0446969494}
+  m_AnchorMax: {x: .582234383, y: .140303075}
+  m_AnchoredPosition: {x: -3, y: -.5}
   m_SizeDelta: {x: 6, y: 3}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &708962401
@@ -879,7 +879,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 825411238}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1944503063}
+        m_MethodName: OnCredits
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &825411238
@@ -1278,10 +1290,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1944503059}
   m_RootOrder: 2
-  m_AnchorMin: {x: .282000005, y: .365484625}
-  m_AnchorMax: {x: .75000006, y: .460000008}
-  m_AnchoredPosition: {x: -5.09196663, y: 1}
-  m_SizeDelta: {x: -3, y: -2}
+  m_AnchorMin: {x: .268000007, y: .365484625}
+  m_AnchorMax: {x: .734257877, y: .462606132}
+  m_AnchoredPosition: {x: -1.38401794, y: 0}
+  m_SizeDelta: {x: -1, y: -4}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1286676766
 MonoBehaviour:
