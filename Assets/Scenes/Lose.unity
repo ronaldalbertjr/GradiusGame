@@ -136,8 +136,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 196355669}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.31634581, y: 1.31634581, z: 1.31634581}
+  m_LocalPosition: {x: .0399999991, y: 0, z: 0}
+  m_LocalScale: {x: 1.5685811, y: 1.31634581, z: 1.31634581}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -311,7 +311,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FontData:
     m_Font: {fileID: 12800000, guid: 1e13f21f52fa81b4f87c0d13db70d079, type: 3}
-    m_FontSize: 30
+    m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -340,10 +340,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1260233837}
   m_RootOrder: 0
-  m_AnchorMin: {x: .658750057, y: .930000067}
+  m_AnchorMin: {x: .601750076, y: .900000036}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 3.05175781e-05, y: .999969482}
-  m_SizeDelta: {x: 0, y: -2}
+  m_AnchoredPosition: {x: 1, y: -.5}
+  m_SizeDelta: {x: -3, y: 0}
   m_Pivot: {x: .5, y: .5}
 --- !u!1 &1119473478
 GameObject:
@@ -485,7 +485,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1440, y: 900}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
