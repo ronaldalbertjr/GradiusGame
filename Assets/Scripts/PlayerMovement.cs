@@ -76,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
             Instantiate(shield, this.transform.position + Vector3.right, new Quaternion(0f, 0f, 0f, 0f));
             shieldBuff = false;
         }
-        if (Input.GetKeyDown(KeyCode.KeypadEnter))
+        if (Input.GetKeyDown(KeyCode.Return))
         {
             for (int i = 0; i < shot.Length; i++)
             {

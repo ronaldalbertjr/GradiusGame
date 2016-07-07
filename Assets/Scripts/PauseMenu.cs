@@ -28,6 +28,7 @@ public class PauseMenu : MonoBehaviour
     public void OnBackToMenu()
     {
         Application.LoadLevel("Menu");
+        Time.timeScale = 1;
     }
     public void OnSlide()
     {
