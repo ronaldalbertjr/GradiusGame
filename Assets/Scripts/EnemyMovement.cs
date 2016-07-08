@@ -10,7 +10,6 @@ public class EnemyMovement : MonoBehaviour
     double deathtime;
     public bool dying;
     public GameObject prefab;
-    AudioSource playeraudio;
     public GameObject speedBuff;
     public GameObject weaponBuff;
     public GameObject shieldBuff;
@@ -18,7 +17,6 @@ public class EnemyMovement : MonoBehaviour
     {
         speedx = -1;
         speedy = 5;
-        playeraudio = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>();
 	}
 	void Update ()
     {
@@ -47,7 +45,6 @@ public class EnemyMovement : MonoBehaviour
         else if(time > 1)
         {
             time = 0;
-            playeraudio.Play();
             Instantiate(prefab, this.transform.position + new Vector3(-4, 0), Quaternion.Euler(0, 0, 180f));
         }
         aux = new Vector3(Time.deltaTime * speedx, Time.deltaTime * speedy);

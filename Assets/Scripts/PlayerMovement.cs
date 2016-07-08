@@ -7,15 +7,15 @@ public class PlayerMovement : MonoBehaviour
     float mvy;
     float speedTime;
     float weaponTime;
-    GameObject boss;
     public bool speedBuff;
     GameObject player2;
     double deathtime;
     public GameObject prefab;
-    public GameObject[] enemyprefab =  new GameObject[5];
+    GameObject boss;
     GameObject[] shot = new GameObject[5];
     public GameObject shield;
     public AudioSource audio;
+    public AudioSource audioshot;
     public float speed;
     public bool dying;
     double time;
@@ -24,8 +24,8 @@ public class PlayerMovement : MonoBehaviour
 	void Start ()
     {
         speed = 5;
-        boss = GameObject.FindGameObjectWithTag("Boss");
         player2 = GameObject.FindGameObjectWithTag("Player2");
+        boss = GameObject.FindGameObjectWithTag("Boss");
         audio.Pause();
 	}
 	void Update ()
@@ -42,14 +42,6 @@ public class PlayerMovement : MonoBehaviour
                 {
                     Application.LoadLevel("Lose");
                 }
-            }
-        }
-        if (boss != null)
-        {
-            if (time > 3 && boss.GetComponent<BossScript>().enemycounter < 20)
-            {
-                Instantiate(enemyprefab[Random.Range(0, 3)], new Vector3(6, Random.Range(-4, 4)), new Quaternion(0f, 0f, 0f, 0f));
-                time = 0;
             }
         }
         if(speedBuff)
@@ -82,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (shot[i] == null)
                 {
-                    this.GetComponent<AudioSource>().Play();
+                    audioshot.GetComponent<AudioSource>().Play();
                     shot[i] = (GameObject)Instantiate(prefab, this.transform.position + new Vector3(3, 0), new Quaternion(0f, 0f, 0f, 0f));
                     if (weaponBuff)
                     {

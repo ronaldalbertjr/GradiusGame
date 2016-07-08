@@ -8,7 +8,6 @@ public class EnemyMovement2 : MonoBehaviour
     double time;
     double deathtime;
     public bool dying;
-    AudioSource playeraudio;
     GameObject player;
     public GameObject speedBuff;
     public GameObject weaponBuff;
@@ -16,7 +15,6 @@ public class EnemyMovement2 : MonoBehaviour
     void Start()
     {
         speed = 5;
-        playeraudio = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>();
         player = GameObject.FindGameObjectWithTag("Player");
         this.transform.rotation = Quaternion.Euler(0f, 0f, -90f);
     }

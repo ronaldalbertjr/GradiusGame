@@ -11,6 +11,7 @@ public class PlayerMovement2 : MonoBehaviour
     GameObject player;
     GameObject boss;
     GameObject[] shot = new GameObject[5];
+    public AudioSource audioshot;
     public GameObject shield;
     public float speed;
     public bool dying;
@@ -69,7 +70,7 @@ public class PlayerMovement2 : MonoBehaviour
             {
                 if (shot[i] == null)
                 {
-                    player.GetComponent<AudioSource>().Play();
+                    audioshot.GetComponent<AudioSource>().Play();
                     shot[i] = (GameObject)Instantiate(prefab, this.transform.position + new Vector3(3, 0), new Quaternion(0f, 0f, 0f, 0f));
                     if (weaponBuff)
                     {
