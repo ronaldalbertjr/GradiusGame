@@ -9,6 +9,7 @@ public class EnemyMovement2 : MonoBehaviour
     double deathtime;
     public bool dying;
     GameObject player;
+    GameObject player2;
     public GameObject speedBuff;
     public GameObject weaponBuff;
     public GameObject shieldBuff;
@@ -16,6 +17,7 @@ public class EnemyMovement2 : MonoBehaviour
     {
         speed = 5;
         player = GameObject.FindGameObjectWithTag("Player");
+        player2 = GameObject.FindGameObjectWithTag("Player2");
         this.transform.rotation = Quaternion.Euler(0f, 0f, -90f);
     }
     void Update()
@@ -42,21 +44,38 @@ public class EnemyMovement2 : MonoBehaviour
                 }
             }
         }
-       transform.position = Vector3.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
+        if (player != null)
+        {
+            transform.position = Vector3.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
+        }
+        else
+        {
+            transform.position = Vector3.MoveTowards(this.transform.position, player2.transform.position, speed * Time.deltaTime);
+        }
     }
     void OnCollisionEnter2D(Collision2D col)
     {
-        if(col.gameObject.tag == "Shield" && !dying)
+        if (col.gameObject.tag == "Player" && !dying)
         {
-            Destroy(col.gameObject);
-        }
-        else if (col.gameObject.tag == "Player" && !dying)
-        {
-            col.gameObject.GetComponent<PlayerMovement>().dying = true;
+            if (col.gameObject.GetComponent<PlayerMovement>().shieldBuff)
+            {
+                col.gameObject.GetComponent<PlayerMovement>().shieldBuff = false;
+            }
+            else
+            {
+                col.gameObject.GetComponent<PlayerMovement>().dying = true;
+            }
         }
         else if (col.gameObject.tag == "Player2" && !dying)
         {
-            col.gameObject.GetComponent<PlayerMovement2>().dying = true;
+            if (col.gameObject.GetComponent<PlayerMovement2>().shieldBuff)
+            {
+                col.gameObject.GetComponent<PlayerMovement2>().shieldBuff = false;
+            }
+            else
+            {
+                col.gameObject.GetComponent<PlayerMovement2>().dying = true;
+            }
         }
     }
 }

@@ -57,13 +57,15 @@ public class ShotScript : MonoBehaviour
         }
         else if(col.tag == "Player" && this.tag != "PlayerShot")
         {
-            Destroy(this.gameObject);
-            player.GetComponent<PlayerMovement>().dying = true;
-        }
-        else if(this.tag != "PlayerShot" && col.tag == "Shield")
-        {
-            Destroy(this.gameObject);
-            Destroy(col.gameObject);
+            Destroy(this.gameObject); 
+            if (col.gameObject.GetComponent<PlayerMovement>().shieldBuff)
+            {
+                col.gameObject.GetComponent<PlayerMovement>().shieldBuff = false;
+            }
+            else
+            {
+                col.gameObject.GetComponent<PlayerMovement>().dying = true;
+            }
         }
         else if(this.tag == "PlayerShot" && col.tag == "Boss")
         {
@@ -73,7 +75,14 @@ public class ShotScript : MonoBehaviour
         else if (col.tag == "Player2" && this.tag != "PlayerShot")
         {
             Destroy(this.gameObject);
-            col.GetComponent<PlayerMovement2>().dying = true;
+            if (col.gameObject.GetComponent<PlayerMovement2>().shieldBuff)
+            {
+                col.gameObject.GetComponent<PlayerMovement2>().shieldBuff = false;
+            }
+            else
+            {
+                col.gameObject.GetComponent<PlayerMovement2>().dying = true;
+            }
         }
     }
 }

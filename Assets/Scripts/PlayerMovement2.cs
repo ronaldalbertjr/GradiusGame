@@ -12,7 +12,6 @@ public class PlayerMovement2 : MonoBehaviour
     GameObject boss;
     GameObject[] shot = new GameObject[5];
     public AudioSource audioshot;
-    public GameObject shield;
     public float speed;
     public bool dying;
     double time;
@@ -61,8 +60,11 @@ public class PlayerMovement2 : MonoBehaviour
         }
         if (shieldBuff)
         {
-            Instantiate(shield, this.transform.position + Vector3.right, new Quaternion(0f, 0f, 0f, 0f));
-            shieldBuff = false;
+            this.GetComponent<SpriteRenderer>().color = Color.cyan;
+        }
+        else
+        {
+            this.GetComponent<SpriteRenderer>().color = Color.white;
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {

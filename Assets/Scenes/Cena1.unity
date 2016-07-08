@@ -682,7 +682,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 9
 --- !u!1 &673809424
 GameObject:
   m_ObjectHideFlags: 0
@@ -934,8 +934,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedBuff: 0
   prefab: {fileID: 199612, guid: dcfa9d1be190ee741ae0004b45d0c3d3, type: 2}
-  shield: {fileID: 108026, guid: 4d404a3221581b74db57e377633c135e, type: 2}
-  audio: {fileID: 559232034}
   audioshot: {fileID: 183672033}
   speed: 1
   dying: 0
@@ -1909,6 +1907,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 11406738, guid: ddf424f1f877c5a40b3ef087db7514e3, type: 2}
+      propertyPath: audio
+      value: 
+      objectReference: {fileID: 559232034}
+    - target: {fileID: 11406738, guid: ddf424f1f877c5a40b3ef087db7514e3, type: 2}
+      propertyPath: audioVictory
+      value: 
+      objectReference: {fileID: 559232034}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ddf424f1f877c5a40b3ef087db7514e3, type: 2}
   m_IsPrefabParent: 0

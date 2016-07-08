@@ -13,8 +13,6 @@ public class PlayerMovement : MonoBehaviour
     public GameObject prefab;
     GameObject boss;
     GameObject[] shot = new GameObject[5];
-    public GameObject shield;
-    public AudioSource audio;
     public AudioSource audioshot;
     public float speed;
     public bool dying;
@@ -26,7 +24,6 @@ public class PlayerMovement : MonoBehaviour
         speed = 5;
         player2 = GameObject.FindGameObjectWithTag("Player2");
         boss = GameObject.FindGameObjectWithTag("Boss");
-        audio.Pause();
 	}
 	void Update ()
     {
@@ -65,8 +62,11 @@ public class PlayerMovement : MonoBehaviour
         }
         if(shieldBuff)
         {
-            Instantiate(shield, this.transform.position + Vector3.right, new Quaternion(0f, 0f, 0f, 0f));
-            shieldBuff = false;
+            this.GetComponent<SpriteRenderer>().color = Color.cyan;
+        }
+        else
+        {
+            this.GetComponent<SpriteRenderer>().color = Color.white;
         }
         if (Input.GetKeyDown(KeyCode.Return))
         {
@@ -106,7 +106,6 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            audio.UnPause();
             this.transform.position += Vector3.right * Time.deltaTime;
             if(this.transform.position.x > 8)
             {

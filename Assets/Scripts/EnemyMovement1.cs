@@ -60,17 +60,27 @@ public class EnemyMovement1 : MonoBehaviour
                 dying = true;
             }
         }
-        else if(col.gameObject.tag == "Shield")
-        {
-            Destroy(col.gameObject);
-        }
         else if (col.gameObject.tag == "Player")
         {
-            col.gameObject.GetComponent<PlayerMovement>().dying = true;
+            if (col.gameObject.GetComponent<PlayerMovement>().shieldBuff)
+            {
+                col.gameObject.GetComponent<PlayerMovement>().shieldBuff = false;
+            }
+            else
+            {
+                col.gameObject.GetComponent<PlayerMovement>().dying = true;
+            }
         }
         else if (col.gameObject.tag == "Player2")
         {
-            col.gameObject.GetComponent<PlayerMovement2>().dying = true;
+            if (col.gameObject.GetComponent<PlayerMovement2>().shieldBuff)
+            {
+                col.gameObject.GetComponent<PlayerMovement2>().shieldBuff = false;
+            }
+            else
+            {
+                col.gameObject.GetComponent<PlayerMovement2>().dying = true;
+            }
         }
     }
 }
