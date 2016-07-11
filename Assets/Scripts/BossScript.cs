@@ -21,12 +21,11 @@ public class BossScript : MonoBehaviour
         player2 = GameObject.FindGameObjectWithTag("Player2");
         background = GameObject.Find("Background");
         audio.Pause();
-        enemycounter = 19;
         life = 1;
     }
 	void Update ()
     {
-	    if(enemycounter >= 20)
+	    if(enemycounter >= 40)
         {
             background.GetComponent<AudioSource>().Stop();
             if(this.transform.position.x > 4)
@@ -37,7 +36,12 @@ public class BossScript : MonoBehaviour
             {
                 audio.UnPause();
                 time += Time.deltaTime;
-                if(time > 0.25 && life > 0)
+                if(time > 0.25 && life > 0 && player2 == null)
+                {
+                    time = 0;
+                    Instantiate(prefab, new Vector3(2f, player.transform.position.y), Quaternion.Euler(0f, 0f, 180f));
+                }
+                else if (time > 0.15 && life > 0 && player2 != null)
                 {
                     time = 0;
                     if (player != null)
