@@ -11,11 +11,11 @@ public class MenuScript : MonoBehaviour
     }
     public void OnPlayButton()
     {
-        Application.LoadLevel("Cena1");
+        Application.LoadLevel("Controles");
     }
     public void OnMultiplayer()
     {
-        Application.LoadLevel("Cena2");
+        Application.LoadLevel("Controles2");
     }
     public void OnCredits()
     {
