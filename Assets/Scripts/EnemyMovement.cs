@@ -82,5 +82,10 @@ public class EnemyMovement : MonoBehaviour
                 col.gameObject.GetComponent<PlayerMovement2>().dying = true;
             }
         }
+        
+        else if (col.gameObject.tag == "Enemy" || col.gameObject.tag == "Enemy1" || col.gameObject.tag == "Enemy2")
+        {
+            speedy *= -1;
+        }
     }        
 }
